@@ -1,0 +1,12 @@
+//delete from peticion
+ALTER TABLE `peticion` CHANGE `autorizo` `autorizo` INT(3) NULL DEFAULT NULL;
+
+ALTER TABLE `personal` ADD `horario` VARCHAR(15) NOT NULL DEFAULT 'Matutino' AFTER `turno`;
+
+ALTER ALGORITHM = UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistapersonalv` AS select `volba`.`personal`.`id_personal` AS `id_personal`,concat(`volba`.`personal`.`apellido_paterno`,' ',`volba`.`personal`.`apellido_materno`,' ',`volba`.`personal`.`nombre`) AS `nombreCompleto`,concat(`volba`.`personal`.`nombre`,' ',`volba`.`personal`.`apellido_paterno`,' ',`volba`.`personal`.`apellido_materno`) AS `nombreCompletoR`,`volba`.`personal`.`apellido_paterno` AS `apellido_paterno`,`volba`.`personal`.`apellido_materno` AS `apellido_materno`,`volba`.`personal`.`nombre` AS `nombre`,`volba`.`personal`.`turno` AS `turno`,`volba`.`personal`.`horario` AS `horario`,`volba`.`personal`.`actividad` AS `actividad`,`volba`.`personal`.`fecha_ingreso` AS `fecha_ingreso`,`volba`.`personal`.`estatus` AS `estatus` from `volba`.`personal`
+
+CREATE VIEW vista_faltas_totales as SELECT a.id_personal,CONCAT(p.apellido_paterno, ' ', p.apellido_materno, ' ', p.nombre ) As nombre,p.turno,p.horario,p.fecha_ingreso,p.estatus,COUNT(0)as total_faltas,GROUP_CONCAT(date_format(a.fecha, "%d-%b-%y")) as fecha_faltas from asistencia as a inner JOIN personal as p on a.id_personal=p.id_personal WHERE a.estatus='Falta' AND p.estatus='Activo' OR p.estatus='Activo-Pendiente' GROUP BY id_personal;
+
+ALTER TABLE `candidato` ADD `descripcion` VARCHAR(100) NOT NULL AFTER `estatus`;
+
+ALTER TABLE `peticion` CHANGE `autorizo` `autorizo` VARCHAR(20) NULL DEFAULT NULL;

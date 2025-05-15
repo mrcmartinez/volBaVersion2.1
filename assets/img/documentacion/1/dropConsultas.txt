@@ -1,0 +1,11 @@
+ALTER TABLE documentofisico DROP FOREIGN KEY fk_documentofisico_personal
+ALTER TABLE documentofisico ADD CONSTRAINT fk_documentofisico_personal FOREIGN KEY (id_personal) REFERENCES personal (id_personal) ON DELETE CASCADE ON UPDATE CASCADE
+
+//ajustar autoincrement
+ALTER TABLE personal AUTO_INCREMENT = 593
+
+//insertar personal
+INSERT INTO `personal` (`id_personal`, `nombre`, `apellido_paterno`, `apellido_materno`, `calle`, `colonia`, `numero_exterior`, `fecha_nacimiento`, `estado_civil`, `numero_hijos`, `seguro_medico`, `escolaridad`, `turno`, `actividad`, `fecha_ingreso`, `estatus`) VALUES ('1', 'p', 'p', 'p', 'p', 'p', '102', '2022-07-01', 'Casada', '0', 'IMSS', 'Preparatoria', 'Viernes', 'ACT. VARIAS ', '2022-07-19', 'Activo');
+
+//actualizar
+UPDATE personal SET id_personal = 2 WHERE id_personal = 1

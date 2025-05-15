@@ -1,0 +1,356 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* background: linear-gradient(120deg, #00000046, #026d68); */
+    background: linear-gradient(120deg, #00000046, #559cee70);
+    /* background-color: rgb(0, 0, 0); */
+}
+
+#header {
+    /* background: black; */
+    padding: 10px;
+}
+
+#header ul li {
+    list-style: none;
+    display: inline;
+    padding: 10px;
+}
+
+#header ul li a {
+    /* color: white; */
+    text-decoration: none;
+    padding: 10px;
+}
+
+#main {
+    padding: 20px 0;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+#main-inicio {
+    padding: 20px 0;
+    width: 95%;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.center {
+    text-align: center;
+    font-family: serif;
+}
+
+.right-icon {
+    float: right;
+}
+
+.center small {
+    color: #c7c7c7;
+}
+
+.center-form {
+    margin: auto;
+    width: 100%;
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.inf {
+    width: 15vw;
+    color: white;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.infDetalles {
+    width: 12vw;
+    color: white;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.infCalendar {
+    width: 10vw;
+    color: white;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.center-form-inicio {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    background: whitesmoke;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-form {
+    margin: auto;
+    width: 100%;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+    background: rgb(17, 16, 16);
+    /* border-style: solid; */
+    /* border-color: rgb(0, 0, 0); */
+    /* box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5); */
+}
+
+.section-form input[type=submit].btn-option {
+    background-color: #4CAF50;
+    /* Green */
+    /* max-width: 20%; */
+    width: 15vw;
+    color: white;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /* padding: 15px 32px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    ;
+    border-style: solid;
+    border-color: black;
+}
+
+.section-form input[type=submit] {
+    margin: 0;
+    width: 15vw;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /* max-width: 20%; */
+    background-color: #4c90af;
+    /* Green */
+    border-style: solid;
+    border-color: black;
+    color: white;
+    /* padding: 15px 32px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    ;
+}
+
+form {
+    display: inline;
+    align-items: center;
+}
+
+.form-info {
+    position: relative;
+    padding-left: 15%;
+    display: inline-table;
+}
+
+.form-info-adv {
+    border-style: solid;
+    border-color: red;
+    padding: 10px;
+}
+
+.error {
+    /* color: #ac2323; */
+}
+
+#div2 {
+    width: 100%;
+    height: 30vw;
+    overflow-y: scroll;
+    margin-bottom: 12px;
+}
+
+.titulov {
+    font-size: 70px;
+}
+
+#div3 {
+    width: 1000px;
+    height: 30vw;
+    overflow-y: scroll;
+    margin-bottom: 12px;
+    /* width:200px; */
+    max-width: 1400px;
+    overflow-x: scroll;
+}
+
+
+/* modal */
+
+.modalBaja-contenido {
+    background-color: #ffffff;
+    width: 500px;
+    padding: 20px 20px;
+    margin: 20% auto;
+    position: relative;
+}
+
+.modalBaja {
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalBaja input[type=text] {
+    height: 100px;
+    width: 450px;
+    padding: 0;
+}
+
+#miModalBaja:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.alinear {
+    /* float: right; */
+    /* width: 85%; */
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.btn-options {
+    width: 15%;
+    background-color: #00000048;
+    color: white;
+    font-weight: bold;
+    padding: 14px 0;
+    /* padding: 14px 20px; */
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-options-baja {
+    width: 15%;
+    background-color: #00000048;
+    color: white;
+    font-weight: bold;
+    padding: 14px 0;
+    /* padding: 14px 20px; */
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-options-baja:hover {
+    background-color: #ff0000;
+    /* Green */
+    /* color: white; */
+}
+
+.btn-options-activo {
+    width: 15%;
+    background-color: #00000048;
+    color: white;
+    font-weight: bold;
+    padding: 14px 0;
+    /* padding: 14px 20px; */
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-options-activo:hover {
+    background-color: #00ff40;
+    /* Green */
+    /* color: white; */
+}
+
+.btn-options-check {
+    width: 15%;
+    background-color: #189140;
+    color: white;
+    font-weight: bold;
+    padding: 14px 0;
+    /* padding: 14px 20px; */
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+.btn-options-check:hover {
+    background-color: #2aff2a;
+    /* Green */
+    /* color: white; */
+}
+
+.btn-options-check-Red {
+    width: 15%;
+    background-color: #e72b2b;
+    color: white;
+    font-weight: bold;
+    padding: 14px 0;
+    /* padding: 14px 20px; */
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-options-check-Red:hover {
+    background-color: #fa0000;
+    /* Green */
+}
+
+.btn-options-info {
+    width: 15%;
+    background-color: #06adca;
+    color: white;
+    font-weight: bold;
+    padding: 3px 0;
+    /* padding: 14px 20px; */
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* a:hover img{
+    background-color: rgb(237, 253, 6);
+    padding: 5px;
+} */
+
+
+/* meedia */
+
+
+/* @media only screen and (max-width: 1300px){
+      
+    #div2 {
+        width:  100%;
+        height: 550px; 
+        overflow-y: scroll; margin-bottom: 12px;
+    }
+} */
