@@ -355,6 +355,7 @@ class PersonalModel extends Model{
             return null;
         }
     }
+
     public function deleteCandidato($id,$estatus){
         $query = $this->db->connect()->prepare("UPDATE candidato SET estatus = :estatus WHERE id_candidato = :id_candidato");
     try{
@@ -379,7 +380,7 @@ public function deleteVoluntariado($id){
     }
 }
 public function updateEstado(){
-    $query=$this->db->connect()->prepare("UPDATE personal set estatus = 'Activo-Pendiente' WHERE id_personal IN ( SELECT v.id_personal from vistafaltas as v INNER JOIN personal as p ON v.id_personal = p.id_personal WHERE p.estatus='Activo')");
+    $query=$this->db->connect()->prepare("UPDATE personal set estatus = 'Activo-Pendiente' WHERE id_personal IN ( SELECT v.id_personal from vistafaltasRango as v INNER JOIN personal as p ON v.id_personal = p.id_personal WHERE p.estatus='Activo')");
     try{
         $query->execute();
         return true;
@@ -388,7 +389,7 @@ public function updateEstado(){
     }
 }
 public function updateEstadoFalta(){
-    $query=$this->db->connect()->prepare("UPDATE personal set estatus = 'Activo' WHERE id_personal IN ( SELECT v.id_personal from vistafalta as v INNER JOIN personal as p ON v.id_personal = p.id_personal WHERE p.estatus='Activo-Pendiente')");
+    $query=$this->db->connect()->prepare("UPDATE personal set estatus = 'Activo' WHERE id_personal IN ( SELECT v.id_personal from vistafaltaRango as v INNER JOIN personal as p ON v.id_personal = p.id_personal WHERE p.estatus='Activo-Pendiente')");
     try{
         $query->execute();
         return true;

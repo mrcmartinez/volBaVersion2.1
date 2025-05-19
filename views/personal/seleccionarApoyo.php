@@ -62,13 +62,14 @@
                                 <input type="hidden" name="nombre"
                                     value="<?php echo $personal->apellido_paterno.' '.$personal->apellido_materno.' '.$personal->nombre; ?>">
                             </tr>
-
+                               
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
                 <input type="hidden" name="fecha" value="<?php echo $this->fecha; ?>">
                 <input type="hidden" name="tipo" value="<?php echo $this->tipo; ?>">
+                 
                 <input type="hidden" name="filtroHorario" value="<?php echo $this->filtroHorario; ?>">
             </form>
         </div>

@@ -139,7 +139,7 @@ class PeticionModel extends Model{
         }
     }
     public function updateEstatus($item){
-        $query = $this->db->connect()->prepare('UPDATE personal set estatus = :estatus WHERE id_personal IN (SELECT id_personal from vistafalta WHERE id_personal=:id_personal)');
+        $query = $this->db->connect()->prepare('UPDATE personal set estatus = :estatus WHERE id_personal IN (SELECT id_personal from vistafaltaRango WHERE id_personal=:id_personal)');
         try{
             $query->execute([
                 'id_personal' => $item['id_personal'],

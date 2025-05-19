@@ -23,7 +23,7 @@
                 <!-- <form action="<?php echo constant('URL'); ?>personal/listarPersonal" method="POST">
                     <input type="submit" value="Regresar">
                 </form> -->
-                <form action="<?php echo constant('URL'); ?>consultaAsistencia/verasistenciaid/<?php echo $this->id?>"
+                <form action="<?php echo constant('URL'); ?>consultaAsistencia/verasistenciaidRango/<?php echo $this->id?>"
                     method="POST">
                     <input type="submit" class="btn btn-secondary inf" value="Asistencias">
                 </form>

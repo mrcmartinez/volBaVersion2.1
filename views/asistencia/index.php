@@ -17,7 +17,7 @@
 
 
             <h1 class="center"><?php echo $_SESSION['nombreVol'];?></h1>
-            <h1 class="center">AsistenciaP</h1>
+            <h1 class="center">AsistenciaPaffdfdfd</h1>
             <div class="center">
                 <!-- <form action="<?php echo constant('URL'); ?>personal/listarPersonal" method="POST">
                     <input type="submit" value="Regresar">
@@ -26,7 +26,7 @@
                     method="POST">
                     <input type="submit" class="btn btn-secondary infDetalles" value="calendario">
                 </form>
-                <form action="<?php echo constant('URL'); ?>consultaAsistencia/verasistenciaid/<?php echo $this->id?>"
+                <form action="<?php echo constant('URL'); ?>consultaAsistencia/verasistenciaidRango/<?php echo $this->id?>"
                     method="POST">
                     <input type="submit" class="btn btn-success infDetalles" value="Asistencias">
                 </form>
@@ -138,7 +138,7 @@
 
         <div class="modalBaja-contenido">
             <p>
-                <a href="<?php echo constant('URL'); ?>consultaAsistencia/verasistenciaid/<?php echo $this->id?>">❌</a>
+                <a href="<?php echo constant('URL'); ?>consultaAsistencia/verasistenciaidRango/<?php echo $this->id?>">❌</a>
             </p>
             <form action="<?php echo constant('URL'); ?>consultaAsistencia/registrarMotivo" method="post" method="post">
                 <label for="">Motivo de la Falta dia

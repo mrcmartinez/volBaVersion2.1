@@ -198,8 +198,6 @@ class ConsultaAsistencia extends Controller{
             }
           }
         // hasta aqui ciclo de personal que rola
-           //pendiente actualizar filtroHorario
-        //   $filtroHorario="Matutino";
         $this->actualizarEstatusRolar($fecha);
           $this->view->filtroHorario = $filtroHorario;
           $this->buscarLista($fecha,$filtroHorario);
@@ -212,6 +210,8 @@ class ConsultaAsistencia extends Controller{
             $id_personal=$_POST['personal'];
             $fecha= $_POST['fecha'];
             $estatus=$_POST['tipo'];
+            //
+            //
             $filtroHorario=$_POST['filtroHorario'];
             $hora=consultarEntrada($filtroHorario);
             if($this->model->insertApoyo(['id_personal' => $id_personal, 'fecha' => $fecha,'hora' => $hora,'estatus' => $estatus])){
@@ -352,6 +352,7 @@ class ConsultaAsistencia extends Controller{
         // $pdf->Output("AsistenciasVoluntariado".time().".pdf", "D");
         // $archivo->Output("test.pdf", "D");
         }
+
         function eliminar($param = null){
             $id_personal = $param[0];
             $fecha=$param[1];

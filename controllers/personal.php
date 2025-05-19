@@ -392,6 +392,7 @@ if(isset($_POST['filtroHorario'])){
         }
         $identificador=$this->model->consultarIden($id_personal);
         $nombre=$this->model->consultarId($id_personal);
+        $personal=$this->model->getById($id_personal);
         $file = "QR/qr".$id_personal.".png";
         $content = $id_personal.",".$nombre.",".$identificador;
         $ecc = 'H';
@@ -399,7 +400,37 @@ if(isset($_POST['filtroHorario'])){
         $frame_size = 3;
          QRcode::png($content, $file, $ecc, $pixel_size, $frame_size);
          $img=constant('URL').$file;
-         echo "<h2>VolBaL<h2><div><img src='".$img."'></div><h6><small>$id_personal-$nombre</small><h6>";
+       echo "
+    <style>
+        .tarjeta {
+            width: fit-content;
+            padding: 0.1cm;
+            border: 0.1px solid #000;
+            text-align: center;
+            display: inline-block;
+            font-family: Arial, sans-serif;
+        }
+        .tarjeta img {
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .tarjeta h6 {
+            margin: 2px 0;
+            line-height: 1.2;
+        }
+        .tarjeta h6:last-of-type {
+            margin-bottom: 8px;
+        }
+    </style>
+    <div class='tarjeta'>
+        <h2>VolBaL</h2>
+        <img src='$img'>
+        <h6><small>$id_personal - $personal->apellido_paterno $personal->apellido_materno</small></h6>
+        <h6><small>$personal->nombre</small></h6>
+    </div>
+";
+
+
     }
     function registrarQr($id){
         $id_personal = $id;
@@ -466,6 +497,7 @@ if(isset($_POST['filtroHorario'])){
         $this->view->render('personal/siguienteCat');
     }
     function actualizarEstado(){
+        //actulizacion de estatus por año voluntarias pendientes con 4 faltas, activas con menos de 3 
         if($this->model->updateEstado()&&$this->model->updateEstadoFalta()){
             // $this->model->updateEstatus(['id_personal' => $id_personal,'estatus' => "Activo"]);
             $this->view->mensaje = "estado actualizado";
