@@ -15,25 +15,27 @@
     <div id="main">
         <div class="center-form">
             <form action="<?php echo constant('URL'); ?>documento" method="POST">
-                <input type="submit" class="btn-options" value="Documentacion">
+                <input type="submit" class="btn-option" value="Documentacion">
             </form>
             <form action="<?php echo constant('URL'); ?>documentoFisico/reporte" method="POST">
-                <input type="submit" class="btn-options" value="Documentación Fisica">
+                <input type="submit" class="btn-option" value="Documentación Fisica">
             </form>
             <form action="<?php echo constant('URL'); ?>consultaAsistencia" method="POST">
                 <input type="submit" class="btn-options-check" value="Asistencias">
             </form>
             <form action="<?php echo constant('URL'); ?>baja" method="POST">
-                <input type="submit" class="btn-options" value="Bajas">
+                <input type="submit" class="btn-option" value="Bajas">
             </form>
             <form action="<?php echo constant('URL'); ?>consultaFaltas" method="POST">
-                <input type="submit" class="btn-options" value="Total Faltas">
+                <input type="submit" class="btn-option" value="Total Faltas">
             </form>
 
             <form action="<?php echo constant('URL'); ?>reporteSemanal" method="POST">
-                <input type="submit" class="btn-options" value="Reporte General">
+                <input type="submit" class="btn-option" value="Reporte General">
             </form>
-
+            <form action="<?php echo constant('URL'); ?>reporteSemanal/verReportePeriodo" method="POST">
+                <input type="submit" class="btn btn-option" value="Reporte Periodo">
+            </form>
             <h1 class="center"><small>Reportes</small>Asistencia</h1>
             <div id="respuesta" class="center"></div>
             <form action="<?php echo constant('URL'); ?>consultaAsistencia" method="POST">

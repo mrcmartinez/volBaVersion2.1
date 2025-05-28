@@ -21,42 +21,50 @@
     <div id="main">
         <div class="center-form-inicio">
 
-            <form action="<?php echo constant('URL'); ?>documento" method="POST">
-                <input type="submit" class="btn-option" value="Documentación">
+           <form action="<?php echo constant('URL'); ?>documento" method="POST">
+                <input type="submit" class="btn btn-option" value="Documentación">
             </form>
             <form action="<?php echo constant('URL'); ?>documentoFisico/reporte" method="POST">
-                <input type="submit" class="btn-option" value="Documentación Fisica">
+                <input type="submit" class="btn btn-option" value="Documentación Fisica">
             </form>
             <form action="<?php echo constant('URL'); ?>consultaAsistencia" method="POST">
-                <input type="submit" class="btn-option" value="Asistencias">
+                <input type="submit" class="btn btn-option" value="Asistencias">
             </form>
 
             <form action="<?php echo constant('URL'); ?>baja" method="POST">
-                <input type="submit" class="btn-option" value="Bajas">
+                <input type="submit" class="btn btn-option" value="Bajas">
             </form>
 
             <form action="<?php echo constant('URL'); ?>consultaFaltas" method="POST">
-                <input type="submit" class="btn-option" value="Total Faltas">
+                <input type="submit" class="btn btn-option" value="Total Faltas">
             </form>
 
             <form action="<?php echo constant('URL'); ?>reporteSemanal" method="POST">
-                <input type="submit" class="btn-options-check" value="Reporte General">
+                <input type="submit" class="btn btn-option" value="Reporte General">
             </form>
             <form action="<?php echo constant('URL'); ?>reporteSemanal/verReportePeriodo" method="POST">
-                <input type="submit" class="btn btn-option" value="Reporte Periodo">
+                <input type="submit" class="btn btn-options-check" value="Reporte Periodo">
             </form>
 
-            <h1 class="center">Reporte<small>global</small></h1>
+            <h1 class="center">Reporte<small> Periodo</small></h1>
             <div class="center"><?php echo $this->mensaje; ?></div>
             <div id="respuesta" class="center"></div>
 
-            <form action="<?php echo constant('URL'); ?>reporteSemanal/generarReporte" method="POST">
-                <!-- <input type="hidden" name="fecha_inicio" id="fecha_inicio" value="<?php echo $this->inicio; ?>"> -->
-                <!-- <input type="hidden" name="fecha_termino" id="fecha_termino" value="<?php echo $this->termino; ?>"> -->
+            <form action="<?php echo constant('URL'); ?>reporteSemanal/generarReportePeriodo" method="POST">
+                <input type="hidden" name="fecha_inicio" id="fecha_inicio" value="<?php echo $this->inicio; ?>">
+                <input type="hidden" name="fecha_termino" id="fecha_termino" value="<?php echo $this->termino; ?>">
                 <!-- <input type="image" src="<?php echo constant('URL'); ?>assets/img/xls.png" title="Generar EXCEL">Generar Excel -->
                 <div class="center"><input class="btn-lg btn-primary" type="submit" value="Generar Excel"></div>
             </form>
 
+            <form action="<?php echo constant('URL'); ?>reporteSemanal/verReportePeriodo" method="POST">
+                <p>
+                    De:<input type="Date" name="fecha_inicio" id="fecha_inicio" value="<?php echo $this->inicio; ?>" title="Fecha filtro inicio">
+                    a:<input type="Date" name="fecha_termino" id="fecha_termino" value="<?php echo $this->termino; ?>" title="Fecha filtro fin">
+                    <!-- <input type="text" name="caja_busqueda_baja" id="" title="busqueda por nombre"> -->
+                    <input type="submit" class="btn-options-info" value="🔍Buscar">
+                </p>
+            </form>
 
             <div id="div2">
             <table class="table table-striped table-hover t-tipo2" id="myTableReporte">
@@ -74,7 +82,6 @@
                             <th>Total Asistencia Apoyo</th>
                             <th>Total Falta Justificada</th>
                             <th>Fechas Faltas</th>
-                            <th>Fecha Falta Justificada</th>
                         </tr>
                     </thead>
                     <tbody id="tbody-baja">
@@ -91,24 +98,19 @@
                             <td><?php echo $reporte->rolar ? 'Rolar' : $reporte->turno;?></td>
                             <td><?php echo $reporte->actividad; ?></td>
                             <td><?php echo $reporte->fecha_ingreso; ?></td>
-                            <td><?php echo edad($reporte->fecha_ingreso); ?></td>
+                            <td><?php echo $reporte->antiguedad; ?></td>
                             <td <?php echo colorTotalFalta($reporte->total_faltas);?>><?php echo $reporte->total_faltas; ?></td>
                             <td><?php echo $reporte->total_asistencia; ?></td>
                             <td><?php echo $reporte->total_asistencia_apoyo; ?></td>
                             <td><?php echo $reporte->total_falta_justificada; ?></td>
                             <td><?php echo $reporte->fecha_faltas; ?></td>
-                            <td><?php echo $reporte->fecha_falta_justificada; ?></td>
                         </tr>
-
                         <?php } ?>
                     </tbody>
                 </table>
             </div>
-
-
         </div>
     </div>
-   
 
     <script src="<?php echo constant('URL'); ?>assets/js/main.js"></script>
     </div>

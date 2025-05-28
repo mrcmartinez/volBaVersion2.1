@@ -170,37 +170,37 @@ class ConsultaAsistencia extends Controller{
         $fecha= $_POST['fecha'];
         $filtroHorario=$_POST['filtroHorario'];
         $rolar=FALSE;
-        // $dia = "";
         $dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
         $dia = $dias[(date('N', strtotime($fecha))) - 1];
         $asistencia=$this->model->buscar(['turno' => $dia,'estatus' => $estatus,'horario' => $filtroHorario,'rolar' => $rolar]);
         $hora=consultarHoraLimite($filtroHorario);
-        // print_r($asistencia);
-        foreach ($asistencia as $r) {
-            if($this->model->buscarManual(['id_personal' => $r['id_personal'],'fecha' => $fecha,'hora' => $hora])){
-                $this->view->mensaje = "Lista Actualizada";
-                $this->view->code = "success";
-            }else{
-                $this->view->mensaje = "Lista ya esta actualizada";
-                $this->view->code = "error";
-            }
-          }
+        // foreach ($asistencia as $r) {
+        //     if($this->model->buscarManual(['id_personal' => $r['id_personal'],'fecha' => $fecha,'hora' => $hora])){
+        //         $this->view->mensaje = "Lista Actualizada";
+        //         $this->view->code = "success";
+        //     }else{
+        //         $this->view->mensaje = "Lista ya esta actualizada";
+        //         $this->view->code = "error";
+        //     }l
+        //   }
         //   aqui hacer recorrido de personal que rola turno
+        // buscar el personal que rola turno y ademas que tiene 0 registros en la tabla la semana anterior
+
         $asistenciaRolar=$this->model->buscarRolar($fecha);
-        // print_r($asistenciaRolar);
-        foreach ($asistenciaRolar as $r) {
-            if($this->model->buscarManualRolar(['id_personal' => $r['id_personal'],'fecha' => $fecha,'hora' => $hora])){
-                $this->view->mensaje = "Lista Actualizada";
-                $this->view->code = "success";
-            }else{
-                $this->view->mensaje = "Lista ya esta actualizada";
-                $this->view->code = "error";
-            }
-          }
-        // hasta aqui ciclo de personal que rola
-        $this->actualizarEstatusRolar($fecha);
-          $this->view->filtroHorario = $filtroHorario;
-          $this->buscarLista($fecha,$filtroHorario);
+        dep($asistenciaRolar);
+        // foreach ($asistenciaRolar as $r) {
+        //     if($this->model->buscarManualRolar(['id_personal' => $r['id_personal'],'fecha' => $fecha,'hora' => $hora])){
+        //         $this->view->mensaje = "Lista Actualizada";
+        //         $this->view->code = "success";
+        //     }else{
+        //         $this->view->mensaje = "Lista ya esta actualizada";
+        //         $this->view->code = "error";
+        //     }
+        //   }
+        // // hasta aqui ciclo de personal que rola
+        // $this->actualizarEstatusRolar($fecha);
+        //   $this->view->filtroHorario = $filtroHorario;
+        //   $this->buscarLista($fecha,$filtroHorario);
 
     }
     function actualizarEstatusRolar($fecha){

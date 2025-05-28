@@ -24,6 +24,8 @@ class ReporteSemanalDB{
     public $telefonos;
     public $ocupacion;
     public $rolar;
+    public $edad;
+    public $antiguedad;
 
 }
 

@@ -228,38 +228,56 @@ class ConsultaAsistenciaModel extends Model{
     }
     // buscar el personal que rola turno y ademas que tiene 0 registro de aistencia en los ultimos 6 dias correspondientes a la semana
     // buscar el personal que rola turno y ademas que tiene 0 registros en la tabla la semana anterior
-    public function buscarRolar($fecha){
-        $items = [];
-       // Calcular el número de semana anterior
+    // buscar el personal que rola turno y ademas que tiene 0 registros en la tabla la semana anterior
+public function buscarRolar($fecha){
+    $items = [];
+
     $semanaActual = date('W', strtotime($fecha));
     $semanaAnterior = $semanaActual - 1;
     $anio = date('Y', strtotime($fecha));
-        // echo $numeroSemana;
-            $query = $this->db->connect()->prepare("SELECT DISTINCT p.id_personal
+
+    echo "Fecha original: $fecha<br>";
+    echo "Semana actual: $semanaActual<br>";
+    echo "Semana anterior: $semanaAnterior<br>";
+    echo "Año: $anio<br>";
+
+    $sql = "
+        SELECT DISTINCT p.id_personal
         FROM personal AS p
-        WHERE p.id_personal NOT IN (
-            SELECT a.id_personal
-            FROM asistencia AS a
-            WHERE WEEK(a.fecha, 1) = $semanaAnterior AND YEAR(a.fecha) = $anio
+        WHERE NOT EXISTS (
+            SELECT 1 FROM asistencia a
+            WHERE a.id_personal = p.id_personal
+              AND WEEK(a.fecha, 1) = :semanaAnterior
+              AND YEAR(a.fecha) = :anio
         )
         AND EXISTS (
-            SELECT 1
-            FROM asistencia AS a2
+            SELECT 1 FROM asistencia a2
             WHERE a2.id_personal = p.id_personal
         )
         AND p.estatus != 'Baja'
-        AND P.rolar= TRUE");
-            try{
-                $query->execute();
-            while($row = $query->fetch()){
-                $row['id_personal'];
-                array_push($items, $row);      
-            }
-            return $items;
-        }catch(PDOException $e){
-            return [];
+        AND p.rolar = TRUE
+    ";
+
+    $query = $this->db->connect()->prepare($sql);
+
+    try {
+        $query->execute([
+            'semanaAnterior' => $semanaAnterior,
+            'anio' => $anio
+        ]);
+
+        while ($row = $query->fetch()) {
+            array_push($items, $row);
         }
+
+        return $items;
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        return [];
     }
+}
+
+
     
     
         // buscar el personal que rola turno

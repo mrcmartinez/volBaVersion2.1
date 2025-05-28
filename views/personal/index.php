@@ -78,6 +78,10 @@
                         value="<?php echo $this->filtroHorario; ?>">
                     <input type="image" src="<?php echo constant('URL'); ?>assets/img/pdf.png" title="Generar PDF">
                 </form>
+                <form action="<?php echo constant('URL'); ?>reporteSemanal/birthday" method="POST">
+                    <input type="image" src="<?php echo constant('URL'); ?>assets/img/pastel.png"
+                        title="Cumpleaños">
+                </form>
                 <form action="<?php echo constant('URL'); ?>consultaAsistencia/paseLista" method="post">
                     <input type="image" src="<?php echo constant('URL'); ?>assets/img/listaVinetas.png"
                         title="Lista asistencia">

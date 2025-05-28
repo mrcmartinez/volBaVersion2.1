@@ -28,7 +28,7 @@
                     <a href="<?php echo constant('URL'); ?>candidato/listar">Candidata</a>
                     <a href="<?php echo constant('URL'); ?>curso/listar">Curso</a>
                     <a href="<?php echo constant('URL'); ?>peticion/listar">Peticiones</a>
-                    <a href="<?php echo constant('URL'); ?>consultaFaltas">Reportes</a>
+                    <a href="<?php echo constant('URL'); ?>reporteSemanal/verReportePeriodo">Reportes</a>
                 </ul>
             </nav>
         </div>

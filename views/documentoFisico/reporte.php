@@ -16,22 +16,25 @@
     <div id="main">
         <div class="center-form">
             <form action="<?php echo constant('URL'); ?>documento" method="POST">
-                <input type="submit" class="btn-options" value="Documentación Digital">
+                <input type="submit" class="btn-option" value="Documentación Digital">
             </form>
             <form action="<?php echo constant('URL'); ?>documentoFisico/reporte" method="POST">
                 <input type="submit" class="btn-options-check" value="Documentación Fisica">
             </form>
             <form action="<?php echo constant('URL'); ?>consultaAsistencia" method="POST">
-                <input type="submit" class="btn-options" value="Asistencias">
+                <input type="submit" class="btn-option" value="Asistencias">
             </form>
             <form action="<?php echo constant('URL'); ?>baja" method="POST">
-                <input type="submit" class="btn-options" value="Bajas">
+                <input type="submit" class="btn-option" value="Bajas">
             </form>
             <form action="<?php echo constant('URL'); ?>consultaFaltas" method="POST">
-                <input type="submit" class="btn-options" value="Total Faltas">
+                <input type="submit" class="btn-option" value="Total Faltas">
             </form>
             <form action="<?php echo constant('URL'); ?>reporteSemanal" method="POST">
-                <input type="submit" class="btn-options" value="Reporte General">
+                <input type="submit" class="btn-option" value="Reporte General">
+            </form>
+            <form action="<?php echo constant('URL'); ?>reporteSemanal/verReportePeriodo" method="POST">
+                <input type="submit" class="btn btn-option" value="Reporte Periodo">
             </form>
             <h1 class="center"><small>Reportes</small>Documentación Fisica entregada</h1>
             <div class="center"><?php echo $this->mensaje; ?></div>
