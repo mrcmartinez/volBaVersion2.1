@@ -7,6 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo constant('URL'); ?>assets/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo constant('URL'); ?>assets/img/logo.ico" />
+    <!-- Incluye jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluye DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <!-- Incluye DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!-- Incluye Buttons CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+    <!-- Incluye Buttons JS -->
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 </head>
 
 <body>
@@ -19,8 +34,8 @@
             <form action="<?php echo constant('URL'); ?>reporteSemanal/birthday" method="POST">
                 <div class="alinear">
                     <label for="mes">Seleccione mes: </label>
-<select class="form-select" id="mes" name="mes" autocomplete="off">
-    <?php
+                    <select class="form-select" id="mes" name="mes" autocomplete="off">
+                        <?php
     $nombresMeses = [
         1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril',
         5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto',
@@ -32,7 +47,7 @@
         echo "<option value=\"$i\" $selected>$nombresMeses[$i]</option>";
     }
     ?>
-</select>
+                    </select>
 
                     <!-- <input type="month" type="search" class="form-control" name="caja_busqueda" id="caja_busqueda" autofocus> -->
                     <input type="submit" class="btn btn-info" value="🔍Buscar">
@@ -42,7 +57,7 @@
                 <input type="image" src="<?php echo constant('URL'); ?>assets/img/nuevo.png" value="Nuevo" title="Nuevo candidato">
             </form> -->
             <div id="div2">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" id="table1">
                     <thead>
                         <tr>
                             <th>N°</th>
@@ -69,19 +84,19 @@ foreach ($this->datos as $row) {
     // Verifica si hoy es su cumpleaños
     $esCumple = ($cumple == $hoy);
 ?>
-    <tr id="fila-<?php echo $candidato->id_personal; ?>">
-        <td><?php echo $i; $i++; ?></td>
-        <td><?php echo $candidato->id_personal; ?></td>
-        <td>
-            <?php echo $candidato->nombre; ?>
-            <?php if ($esCumple): ?>
-                <img src="<?php echo constant('URL'); ?>assets/img/confeti.gif" alt="🎉" width="30">
-            <?php endif; ?>
-        </td>
-        <td><?php echo $candidato->edad; ?></td>
-        <td><?php echo $candidato->fecha_nacimiento; ?></td>
-    </tr>
-<?php } ?>
+                        <tr id="fila-<?php echo $candidato->id_personal; ?>">
+                            <td><?php echo $i; $i++; ?></td>
+                            <td><?php echo $candidato->id_personal; ?></td>
+                            <td>
+                                <?php echo $candidato->nombre; ?>
+                                <?php if ($esCumple): ?>
+                                <img src="<?php echo constant('URL'); ?>assets/img/confeti.gif" alt="🎉" width="30">
+                                <?php endif; ?>
+                            </td>
+                            <td><?php echo $candidato->edad; ?></td>
+                            <td><?php echo $candidato->fecha_nacimiento; ?></td>
+                        </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -90,5 +105,48 @@ foreach ($this->datos as $row) {
 
     <?php require 'views/footer.php'; ?>
     <script src="<?php echo constant('URL'); ?>assets/js/estatus.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table1').DataTable({
+            paging: false,              // ❌ Desactiva paginación
+            info: false,                // ❌ Oculta "Mostrando X de Y"
+            scrollY: '400px',           // ✅ Scroll vertical
+            scrollCollapse: true,
+            language: {                 // ✅ Español
+                search: "Buscar:",
+                zeroRecords: "No se encontraron resultados",
+                emptyTable: "No hay datos disponibles",
+                infoFiltered: "(filtrado de _MAX_ registros totales)",
+                loadingRecords: "Cargando...",
+                processing: "Procesando..."
+            },
+            dom: 'Bfrtip',
+            buttons: [
+    {
+        extend: 'excelHtml5',
+        text: 'Exportar a Excel',
+        titleAttr: 'Exportar a Excel',
+        title: 'Cumpleaños' // ← Cambia el encabezado del Excel
+    },
+    {
+        extend: 'pdfHtml5',
+        text: 'Exportar a PDF',
+        titleAttr: 'Exportar a PDF',
+        title: 'Cumpleaños' // ← Cambia el encabezado del PDF
+    },
+    {
+        extend: 'print',
+        text: 'Imprimir',
+        titleAttr: 'Imprimir',
+        title: 'Cumpleaños' // ← Encabezado de la impresión
+    }
+]
+
+        });
+    });
+</script>
+
+
+</body>
 
 </html>

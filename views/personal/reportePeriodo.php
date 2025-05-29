@@ -40,7 +40,7 @@
             </form>
 
             <form action="<?php echo constant('URL'); ?>reporteSemanal" method="POST">
-                <input type="submit" class="btn btn-option" value="Reporte General">
+                <input type="submit" class="btn btn-option" value="Reporte Historico">
             </form>
             <form action="<?php echo constant('URL'); ?>reporteSemanal/verReportePeriodo" method="POST">
                 <input type="submit" class="btn btn-options-check" value="Reporte Periodo">

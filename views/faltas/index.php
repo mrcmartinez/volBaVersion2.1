@@ -33,7 +33,7 @@
                 <input type="submit" class="btn-options-check" value="Total Faltas">
             </form>
             <form action="<?php echo constant('URL'); ?>reporteSemanal" method="POST">
-                <input type="submit" class="btn-option" value="Reporte Semanal">
+                <input type="submit" class="btn-option" value="Reporte Historico">
             </form>
             <form action="<?php echo constant('URL'); ?>reporteSemanal/verReportePeriodo" method="POST">
                 <input type="submit" class="btn btn-option" value="Reporte Periodo">

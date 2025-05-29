@@ -20,18 +20,25 @@
     <div id="main-inicio">
         <div class="container-fluid">
             <div class="center-form-inicio">
-                <h1 class="center">Voluntariado</h1>
+                <h1 class="center">🙋🏻‍♀️ Voluntariado 🙋🏻‍♂️</h1>
                 <div id="note-latest"></div>
                 <div id="respuesta" class="center">
                     <form action="<?php echo constant('URL'); ?>personal/listarPersonal" method="POST">
                         <?php switch($this->radio){
                     case "Activo":
                         echo '<input type="submit" class="btn-options-check" name="radio_busqueda" value="Activo" onchange="this.form.submit()">
-                        <input type="submit" class="btn-options-baja" name="radio_busqueda" value="Baja" onchange="this.form.submit()">';
+                        <input type="submit" class="btn-options-baja" name="radio_busqueda" value="Baja" onchange="this.form.submit()">
+                        <input type="submit" class="btn-options-baja" name="radio_busqueda" value="Activo-Pendiente" onchange="this.form.submit()">';
                         break;
                     case "Baja":
                         echo '<input type="submit" class="btn-options-activo" name="radio_busqueda" value="Activo" onchange="this.form.submit()">
-                        <input type="submit" class="btn-options-check-Red" name="radio_busqueda" value="Baja" onchange="this.form.submit()">';
+                        <input type="submit" class="btn-options-check-Red" name="radio_busqueda" value="Baja" onchange="this.form.submit()">
+                         <input type="submit" class="btn-options-baja" name="radio_busqueda" value="Activo-Pendiente" onchange="this.form.submit()">';
+                        break;
+                    case "Activo-Pendiente":
+                        echo '<input type="submit" class="btn-options-activo" name="radio_busqueda" value="Activo" onchange="this.form.submit()">
+                        <input type="submit" class="btn-options-baja" name="radio_busqueda" value="Baja" onchange="this.form.submit()">
+                         <input type="submit" class="btn-options-check-Red" name="radio_busqueda" value="Activo-Pendiente" onchange="this.form.submit()">';
                         break;
                     // case "Candidato":
                     //     echo '<input type="radio" id="" name="radio_busqueda" value="Activo" onchange="this.form.submit()">Activo
@@ -186,7 +193,7 @@
                                             src="<?php echo constant('URL'); ?>assets/img/edit.png"
                                             title="Editar" /></a>
 
-                                    <?php if ($this->radio!="Activo") {
+                                    <?php if ($this->radio!="Activo" and $this->radio!="Activo-Pendiente" ) {
                                 ?><a
                                         href="<?php echo constant('URL') . 'personal/altaPersonal/' . $personal->id_personal.'/'.$this->radio; ?>"><button
                                             onclick="return confirmBaja()"><img

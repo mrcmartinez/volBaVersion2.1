@@ -83,7 +83,8 @@ class ReporteSemanal extends Controller
         public function birthday(){
             $mes = isset($_POST['mes']) ? $_POST['mes'] : date('m');
             $datos = $this->model->getBirthday($mes);
-            echo $this->view->mes = $mes;
+            //dep($datos);
+            $this->view->mes = $mes;
             $this->view->datos = $datos;
             $this->view->render('personal/birthday');
         }

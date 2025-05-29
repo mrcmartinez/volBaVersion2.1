@@ -1,0 +1,107 @@
+.main-login {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('../img/voluntario.jpg');
+    background-size: cover;
+    /* Para que la imagen cubra todo */
+    background-repeat: no-repeat;
+    /* No se repita */
+    background-position: center center;
+    /* Centrada */
+    background-attachment: fixed;
+    /* Que quede fija al hacer scroll */
+    display: flex;
+    align-items: center;
+    /* Centrar verticalmente */
+    justify-content: center;
+    /* Centrar horizontalmente */
+    min-height: 100vh;
+    /* Altura completa de la pantalla */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-login form {
+    width: 90%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.15);
+    /* semi-transparente */
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-login input[type=text],
+.main-login input[type=password] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: background 0.3s ease;
+    box-shadow: inset 1px 1px 5px rgba(255, 255, 255, 0.3);
+}
+
+.main-login input[type=text]::placeholder,
+.main-login input[type=password]::placeholder {
+    color: #ddd;
+}
+
+.main-login input[type=text]:focus,
+.main-login input[type=password]:focus {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 8px 2px rgba(255, 185, 64, 0.8);
+    color: #fff;
+}
+
+.main-login input[type=submit] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ffb940, #ffda63);
+    color: #4a2e00;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 185, 64, 0.6);
+    transition: all 0.3s ease;
+}
+
+.main-login input[type=submit]:hover {
+    background: linear-gradient(135deg, #ffda63, #ffb940);
+    box-shadow: 0 6px 16px rgba(255, 185, 64, 0.9);
+    transform: translateY(-3px);
+}
+
+.main-login h2 {
+    margin-bottom: 25px;
+    color: #ffda63;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+.main-login input[type=image] {
+    width: 100px;
+    margin-bottom: 20px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.logo-img {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+}
